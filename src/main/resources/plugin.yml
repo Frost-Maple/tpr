@@ -1,0 +1,4 @@
+name: tpr
+version: '${version}'
+main: com.mixpixel.Tpr
+api-version: '1.17'
