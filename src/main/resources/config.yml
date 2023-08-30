@@ -1,1 +1,7 @@
 CoolDownTime: 10
+TpMaxCoordinates: 3000
+#默认传送范围：[-TpMaxCoordinates,TpMaxCoordinates]
+WorldsEnabled:
+  OverWorld: true
+  TheNether: false
+  TheEnd: false
