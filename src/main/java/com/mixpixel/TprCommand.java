@@ -1,10 +1,6 @@
 package com.mixpixel;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,9 +17,22 @@ public class TprCommand implements CommandExecutor {
             sender.sendMessage("This command can only be executed by players.");
             return true;
         }
-        if (args.length != 0){
-            sender.sendMessage("This command doesn't come with Arguments.");
-            return false;
+        if (args.length != 0) {
+            if (args[0].equals("reload")) {
+                if (sender.isOp()) {
+                    Tpr.main.reloadConfig();
+                }
+            } else {
+                sender.sendMessage("This command doesn't come with Arguments.");
+                return false;
+            }
+        }
+        if (Tpr.main.coolDown.containsKey(player)){
+            long secondsLeft = (Tpr.main.coolDown.get(player) / 1000) + Tpr.main.coolDownTime - (System.currentTimeMillis()/1000);
+            if (secondsLeft > 0){
+                player.sendMessage("你需要等待"+secondsLeft+"秒才能继续传送！");
+                return true;
+            }
         }
         Random random = new Random();
         Random Ran = new Random();
@@ -34,6 +43,7 @@ public class TprCommand implements CommandExecutor {
         int y = player.getWorld().getHighestBlockYAt(x,z);
         Location location = new Location(player.getWorld(), x, y, z);
         player.teleport(location);
+        Tpr.main.coolDown.put(player,System.currentTimeMillis());
         return false;
     }
 }

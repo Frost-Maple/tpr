@@ -1,12 +1,22 @@
 package com.mixpixel;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public final class Tpr extends JavaPlugin {
+    @Override
+    public void saveDefaultConfig() {
+        super.saveDefaultConfig();
+    }
+
     static Tpr main;
+    public final Map<Player, Long> coolDown = new HashMap<>();
+    public final int coolDownTime = getConfig().getInt("CoolDownTime");
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -21,7 +31,7 @@ public final class Tpr extends JavaPlugin {
         // Plugin shutdown logic
         System.out.println("""
                 Tpr is Unloading. Thank you for using.
-                Build 0.0.10(107)
+                Build 0.0.10(110)
                 By Lettuce
                 With help from OPenAI's ChatGPT
                 On 30 Aug '23
@@ -29,6 +39,5 @@ public final class Tpr extends JavaPlugin {
                 """);
     }
     public void loadConfigurations(){
-
     }
 }
