@@ -1,4 +1,7 @@
 name: tpr
-version: '${version}'
+version: '0.0.10'
 main: com.mixpixel.Tpr
 api-version: '1.17'
+commands:
+  tpr:
+    description: "Randomly Teleport"
