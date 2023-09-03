@@ -1,5 +1,5 @@
 name: tpr
-version: '0.0.10'
+version: '1.0.0'
 main: com.mixpixel.Tpr
 api-version: '1.17'
 commands:

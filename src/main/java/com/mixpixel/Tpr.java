@@ -33,10 +33,10 @@ public final class Tpr extends JavaPlugin {
         // Plugin shutdown logic
         System.out.println("""
                 Tpr is Unloading. Thank you for using.
-                Build 0.0.12(114)
+                Build 1.0.0(115)
                 By Lettuce
                 With help from OPenAI's ChatGPT
-                On 30 Aug '23
+                On 31 Aug '23
                 Bye!
                 """);
     }

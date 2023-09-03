@@ -36,26 +36,28 @@ public class TprCommand implements CommandExecutor {
             }
         }
         World.Environment environment = player.getWorld().getEnvironment();
-        switch (environment){
-
-            case NORMAL:
-                if(Tpr.main.getConfig().getBoolean("WorldsEnabled.OverWorld")){
-                    Teleport(player.getWorld(),player);
-                }else {
+        switch (environment) {
+            case NORMAL -> {
+                if (Tpr.main.getConfig().getBoolean("WorldsEnabled.OverWorld")) {
+                    Teleport(player.getWorld(), player);
+                } else {
                     player.sendMessage("当前世界（主世界）无法随机传送！");
                 }
-            case NETHER:
-                if (Tpr.main.getConfig().getBoolean("WorldsEnabled.TheNether")){
-                    Teleport(player.getWorld(),player);
-                }else{
+            }
+            case NETHER -> {
+                if (Tpr.main.getConfig().getBoolean("WorldsEnabled.TheNether")) {
+                    Teleport(player.getWorld(), player);
+                } else {
                     player.sendMessage("当前世界（下界）无法随机传送！");
                 }
-            case THE_END:
-                if (Tpr.main.getConfig().getBoolean("WorldsEnabled.TheEnd")){
-                    Teleport(player.getWorld(),player);
-                }else{
+            }
+            case THE_END -> {
+                if (Tpr.main.getConfig().getBoolean("WorldsEnabled.TheEnd")) {
+                    Teleport(player.getWorld(), player);
+                } else {
                     player.sendMessage("当前世界（末地）无法随机传送！");
                 }
+            }
         }
         return false;
     }
@@ -70,7 +72,7 @@ public class TprCommand implements CommandExecutor {
         int y = (world.getHighestBlockYAt(x,z))+1;
         Location location = new Location(world, x, y, z);
         player.teleport(location);
-        player.sendMessage("随机传送到坐标（"+x+y+z+"）");
+        player.sendMessage("随机传送到坐标（"+x+","+y+","+z+"）");
         Tpr.main.coolDown.put(player,System.currentTimeMillis());
     }
 }
